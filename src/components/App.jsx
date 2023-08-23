@@ -41,6 +41,7 @@ function App() {
           title="Редактировать профиль"
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          buttonText="Сохранить"
           children={
             <>
               <input
@@ -75,6 +76,7 @@ function App() {
           title="Новое место"
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
+          buttonText="Создать"
           children={
             <>
               <input
@@ -107,6 +109,7 @@ function App() {
           title="Обновить аватар"
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
+          buttonText="Сохранить"
           children={
             <>
               <input

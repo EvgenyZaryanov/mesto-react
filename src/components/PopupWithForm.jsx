@@ -25,8 +25,9 @@ function PopupWithForm(props) {
             className="popup__submit-button popup__submit-button_disabled"
             disabled
             onClick={onSubmit}
-            text={buttonText}
-          ></button>
+          >
+            {buttonText}
+          </button>
         </form>
       </div>
     </div>
