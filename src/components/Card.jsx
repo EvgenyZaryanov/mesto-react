@@ -9,8 +9,8 @@ function Card(props) {
         className="element__image"
         onClick={() => onCardClick(props)}
         src={link}
-        title=""
-        alt=""
+        title={name}
+        alt={name}
       />
       <button
         className="element__delete-button element__delete-button_active"
