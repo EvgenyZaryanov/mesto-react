@@ -12,9 +12,14 @@
   height: 19px;
   border: none;
   cursor: pointer;
-  display: none;
+  outline-width: 0;
+  display: block;
+  /* display: none; */
 }
 .element__delete-button:hover {
   opacity: 0.6;
   transition: opacity 0.5s;
+}
+.element__delete-button:focus {
+  outline: none;
 }
