@@ -1,18 +1,14 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function ConfirmDeletePopup({ isOpen, onClose, onDeleteCard }) {
-  const [isLoading, setIsLoading] = React.useState(false);
-
+function ConfirmDeletePopup({ isOpen, onClose, onDeleteCard, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
     onDeleteCard();
   }
 
   return (
     <PopupWithForm
-      // className="popup__form popup__form-delete-card"
       name="deleteCard"
       title="Вы уверены?"
       isOpen={isOpen}

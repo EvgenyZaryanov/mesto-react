@@ -1,5 +1,3 @@
-// import { token } from '../utils/constants.js';
-
 class Api {
   constructor(config) {
     this._url = config.url;
@@ -89,26 +87,3 @@ const api = new Api({
 });
 
 export default api;
-
-// let userId;
-
-// api
-//   .getUserInfo()
-//   .then(resApi => {
-//     userId = resApi._id;
-//     userInfo.setUserInfo(resApi.name, resApi.about, userId);
-//     userInfo.setUserAvatar(resApi.avatar);
-//   })
-//   .then(() => {
-//     api
-//       .getCards()
-//       .then(res => {
-//         cardList.renderItems(res, userId);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });

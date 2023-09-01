@@ -1,4 +1,7 @@
+import { usePopupClose } from '../hooks/usePopupClose.js';
+
 function PopupWithForm({ title, name, children, buttonText, isOpen, onClose, onSubmit }) {
+  usePopupClose(isOpen, onClose);
   return (
     <div className={`popup popup_${name} ${isOpen ? 'popup_opened' : ''}`}>
       <div className={`popup__container popup__container_${name}`}>

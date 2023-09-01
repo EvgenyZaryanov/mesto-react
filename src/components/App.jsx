@@ -20,6 +20,7 @@ function App() {
   const [selectedCardDelete, setSelectedCardDelete] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     api
@@ -73,11 +74,13 @@ function App() {
   }
 
   function handleCardDelete() {
+    setIsLoading(true);
     api
       .deleteCard(selectedCardDelete._id)
       .then(() => {
         const newCards = cards.filter(c => c._id !== selectedCardDelete._id);
         setCards(newCards);
+        setIsLoading(false);
         setSelectedCardDelete({});
         closeAllPopups();
       })
@@ -85,9 +88,11 @@ function App() {
   }
 
   function handleUpdateUser(data) {
+    setIsLoading(true);
     api
       .changeUserInfo(data)
       .then(() => {
+        setIsLoading(false);
         setCurrentUser({ ...currentUser, ...data });
         closeAllPopups();
       })
@@ -95,9 +100,11 @@ function App() {
   }
 
   function handleUpdateAvatar(avatar) {
+    setIsLoading(true);
     api
       .changeAvatar(avatar)
       .then(() => {
+        setIsLoading(false);
         setCurrentUser({ ...currentUser, ...avatar });
         closeAllPopups();
       })
@@ -105,9 +112,11 @@ function App() {
   }
 
   function handleAddPlaceSubmit(card) {
+    setIsLoading(true);
     api
       .addCard(card)
       .then(newCard => {
+        setIsLoading(false);
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
@@ -141,21 +150,25 @@ function App() {
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
+            isLoading={isLoading}
           />
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
+            isLoading={isLoading}
           />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
+            isLoading={isLoading}
           />
           <ConfirmDeletePopup
             isOpen={isConfirmDeletePopupOpen}
             onClose={closeAllPopups}
             onDeleteCard={handleCardDelete}
+            isLoading={isLoading}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         </div>
@@ -165,48 +178,3 @@ function App() {
 }
 
 export default App;
-
-// function handleCardClick(card) {
-//   setImagePopupOpen(true);
-//   setSelectedCard(card);
-// }
-
-// onEditProfile={() => setIsEditProfilePopupOpen(true)}
-// onAddPlace={() => setIsAddPlacePopupOpen(true)}
-// onEditAvatar={() => setIsEditAvatarPopupOpen(true)}
-// onCard={handleCardClick}
-
-// <PopupWithForm
-//   name="add-form"
-//   title="Редактировать профиль"
-//   isOpen={isEditProfilePopupOpen}
-//   onClose={closeAllPopups}
-//   buttonText="Сохранить"
-// children={
-//   <>
-//     <input
-//       className="popup__input"
-//       name="profileName"
-//       id="profileName-input"
-//       placeholder="Имя"
-//       type="text"
-//       minLength="2"
-//       maxLength="40"
-//       required
-//     />
-//     <p className="popup__span-paragraph"></p>
-//     <span className="popup__input-error"></span>
-//     <input
-//       className="popup__input"
-//       name="profileDetails"
-//       id="profileDetails-input"
-//       placeholder="О себе"
-//       type="text"
-//       minLength="2"
-//       maxLength="200"
-//       required
-//     />
-//     <p className="popup__span-paragraph"></p>
-//     <span className="popup__input-error"></span>
-//   </>
-// }

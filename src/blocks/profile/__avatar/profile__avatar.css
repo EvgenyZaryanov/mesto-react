@@ -3,17 +3,16 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   position: relative;
   background-image: url(../../../images/avatar__image.jpg);
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  margin-right: 30px;
-  /* cursor: default;
-  flex-shrink: 0; */
+  margin-right: 30px; */
 }
 
-.profile__avatar::before {
+/* .profile__avatar::before {
   width: 100%;
   height: 100%;
   display: block;
@@ -44,4 +43,4 @@
   .profile__avatar {
     margin: 0px 0px 26px;
   }
-}
+} */
